@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 
 import 'package:news_app/controller/news_controller.dart';
 import 'package:news_app/controller/search_screen_controller.dart';
@@ -7,7 +8,10 @@ import 'package:news_app/view/main_page/main_page.dart';
 
 import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Hive.initFlutter();
+  var box = await Hive.openBox("newsBox");
   runApp(const MyApp());
 }
 

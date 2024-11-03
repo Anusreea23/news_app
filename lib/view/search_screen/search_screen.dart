@@ -16,10 +16,16 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     final searchScreenProvider = context.watch<SearchScreenController>();
     return Scaffold(
-      
+      appBar: AppBar(
+        title: Text(
+          "Search Here",
+          style: TextStyle(color: Colors.purple, fontWeight: FontWeight.bold),
+        ),
+      ),
       body: Column(
         children: [
           SearchBar(
+            backgroundColor: WidgetStatePropertyAll(Colors.purple),
             controller: controller,
             leading: IconButton(
                 onPressed: () {

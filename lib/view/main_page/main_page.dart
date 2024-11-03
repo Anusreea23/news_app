@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:news_app/view/bookmark_screen/bookmark_screen.dart';
 
 import 'package:news_app/view/home_screen/home_screen.dart';
+
+import 'package:news_app/view/profile_page/profile_page.dart';
 import 'package:news_app/view/search_screen/search_screen.dart';
 
 class MainPage extends StatefulWidget {
@@ -17,6 +19,7 @@ class _MainPageState extends State<MainPage> {
     HomeScreen(),
     SearchScreen(),
     BookmarkScreen(),
+    ProfilePage(),
   ];
   void onTapped(int index) {
     if (index == 2) ;
@@ -32,21 +35,21 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.purple,
         iconSize: 22,
-        unselectedItemColor: Colors.grey,
-        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.black,
+        selectedItemColor: Colors.purple,
         showUnselectedLabels: true,
         onTap: onTapped,
         currentIndex: currentIndex,
         items: [
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.explore,
+                Icons.home,
                 size: 25,
               ),
-              label: "Explore"),
+              label: "Home"),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.search_rounded,
+                Icons.explore,
                 size: 25,
               ),
               label: "Search"),
@@ -56,6 +59,12 @@ class _MainPageState extends State<MainPage> {
                 size: 25,
               ),
               label: "Saved"),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person,
+                size: 25,
+              ),
+              label: "Profile"),
         ],
       ),
       body: children[currentIndex],

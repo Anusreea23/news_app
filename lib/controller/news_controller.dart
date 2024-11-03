@@ -6,7 +6,7 @@ import 'package:news_app/model/article_model.dart';
 import 'package:http/http.dart' as http;
 
 class NewsController with ChangeNotifier {
-  ArticleModel? news;
+  List<Article>? news = [];
   bool isLoading = false;
 
   Future<void> getNewsDetails() async {
@@ -21,7 +21,8 @@ class NewsController with ChangeNotifier {
       var response = await http.get(url);
       if (response.statusCode == 200) {
         log(response.body);
-        news = articleModelFromJson(response.body);
+        var article = newsModelFromJson(response.body);
+        news = article.articles;
       }
     } catch (error) {
       print('$error');
